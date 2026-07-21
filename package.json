@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "seed": "tsx prisma/seed.ts",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint",
-    "prepare": "husky"
-  },
+  "dev": "next dev",
+  "seed": "tsx prisma/seed.ts",
+  "build": "next build",
+  "postinstall": "prisma generate",
+  "start": "next start",
+  "lint": "eslint",
+  "prepare": "husky"
+},
   "dependencies": {
     "@base-ui/react": "^1.6.0",
     "@neondatabase/serverless": "^1.1.0",
