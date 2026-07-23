@@ -28,7 +28,7 @@ const categories = [
   {
     title: "Accesorios",
     description: "Complementos premium para cada experiencia.",
-    image: "/images/categories/Accesorios.webp",
+    image: "/images/images/Accesorios.webp",
     href: "/products?category=accesorios",
     products: 31,
   },
