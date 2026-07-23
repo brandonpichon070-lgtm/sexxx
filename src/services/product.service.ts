@@ -1,4 +1,3 @@
-
 import { ProductRepository } from "@/repositories/product.repository";
 
 export class ProductService {
@@ -19,16 +18,17 @@ export class ProductService {
   }
 
   static async createProduct(data: {
-  name: string;
-  slug: string;
-  description?: string;
-  imageUrl?: string;
-  price: number;
-  categoryId: string;
-  brandId: string;
-}) {
-  return ProductRepository.create(data);
-}
+    name: string;
+    slug: string;
+    description?: string;
+    imageUrl?: string;
+    price: number;
+    categoryId: string;
+    brandId: string;
+    status: "ACTIVE" | "DRAFT" | "OUT_OF_STOCK" | "ARCHIVED";
+  }) {
+    return ProductRepository.create(data);
+  }
 
   static async getProductById(id: string) {
     return ProductRepository.findById(id);
@@ -42,16 +42,9 @@ export class ProductService {
       price: number;
       categoryId: string;
       brandId: string;
-    }
+      status?: "ACTIVE" | "DRAFT" | "OUT_OF_STOCK" | "ARCHIVED";
+    },
   ) {
     return ProductRepository.update(id, data);
   }
 }
-
-
-
-
-
-
-
-

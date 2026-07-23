@@ -1,7 +1,6 @@
 import { prisma } from "@/lib/prisma";
 
 export class ProductRepository {
-
   static async findFeatured() {
     return prisma.product.findMany({
       include: {
@@ -15,18 +14,19 @@ export class ProductRepository {
     });
   }
 
-  static async findBySlug(
-    slug: string
-  ) {
+  static async findBySlug(slug: string) {
     return prisma.product.findUnique({
       where: {
         slug,
       },
-
       include: {
         category: true,
         brand: true,
-        variants: true,
+        variants: {
+          include: {
+            inventory: true,
+          },
+        },
       },
     });
   }
@@ -37,25 +37,25 @@ export class ProductRepository {
         category: true,
         brand: true,
       },
-
       orderBy: {
         createdAt: "desc",
       },
     });
   }
 
-  static async findById(
-    id: string
-  ) {
+  static async findById(id: string) {
     return prisma.product.findUnique({
       where: {
         id,
       },
-
       include: {
         category: true,
         brand: true,
-        variants: true,
+        variants: {
+          include: {
+            inventory: true,
+          },
+        },
       },
     });
   }
@@ -68,6 +68,7 @@ export class ProductRepository {
     price: number;
     categoryId: string;
     brandId: string;
+    status: "ACTIVE" | "DRAFT" | "OUT_OF_STOCK" | "ARCHIVED";
   }) {
     return prisma.product.create({
       data: {
@@ -78,19 +79,34 @@ export class ProductRepository {
         price: data.price,
         categoryId: data.categoryId,
         brandId: data.brandId,
+        status: data.status,
 
         variants: {
           create: {
-            sku: `SKU-${Date.now()}`,
-            name: "Default",
+            sku: `VEL-${Date.now()}`,
+            name: "Presentación estándar",
             price: data.price,
             stock: 100,
+
+            inventory: {
+              create: {
+                physicalStock: 100,
+                reservedStock: 0,
+                availableStock: 100,
+              },
+            },
           },
         },
       },
 
       include: {
-        variants: true,
+        category: true,
+        brand: true,
+        variants: {
+          include: {
+            inventory: true,
+          },
+        },
       },
     });
   }
@@ -103,24 +119,24 @@ export class ProductRepository {
       price: number;
       categoryId: string;
       brandId: string;
-    }
+      status?: "ACTIVE" | "DRAFT" | "OUT_OF_STOCK" | "ARCHIVED";
+    },
   ) {
     return prisma.product.update({
       where: {
         id,
       },
-      data,
+      data: {
+        ...data,
+      },
     });
   }
 
-  static async delete(
-    id: string
-  ) {
+  static async delete(id: string) {
     return prisma.product.delete({
       where: {
         id,
       },
     });
   }
-
 }
