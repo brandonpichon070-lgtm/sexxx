@@ -1,0 +1,86 @@
+.fade-up {
+  animation: fadeUp 0.8s ease forwards;
+}
+.fade {
+  animation: fade 0.8s ease forwards;
+}
+.scale {
+  animation: scale 0.6s ease forwards;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+@keyframes scale {
+  from {
+    opacity: 0;
+
+    transform: scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: scale(1);
+  }
+}
+
+@keyframes floatPink {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(40px, 80px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes floatPurple {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-60px, -40px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+@keyframes floatBlue {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(70px, -70px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}

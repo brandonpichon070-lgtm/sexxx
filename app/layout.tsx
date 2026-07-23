@@ -1,13 +1,9 @@
 import type { Metadata } from "next";
-import {
-  Geist,
-  Geist_Mono,
-  Playfair_Display,
-} from "next/font/google";
+import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 
 import "./globals.css";
 
-import { AuthProvider } from "@/components/auth/AuthProvider";
+import { BackgroundProvider } from "@/components/providers/BackgroundProvider";
 
 const geistSans = Geist({
   subsets: ["latin"],
@@ -20,13 +16,11 @@ const geistMono = Geist_Mono({
 });
 
 const playfair = Playfair_Display({
+  variable: "--font-display",
 
-    variable: "--font-display",
+  subsets: ["latin"],
 
-    subsets:["latin"],
-
-    weight:["400","500","600","700"]
-
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -51,9 +45,9 @@ export default function RootLayout({
       `}
     >
       <body>
-        <AuthProvider>
-          {children}
-        </AuthProvider>
+        <body>
+          <BackgroundProvider>{children}</BackgroundProvider>
+        </body>
       </body>
     </html>
   );

@@ -105,9 +105,9 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
- --font-sans: var(--font-geist-sans);
---font-mono: var(--font-geist-mono);
---font-display: var(--font-display);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-display);
 
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
@@ -116,39 +116,31 @@
 
   /* Velvet Tokens */
 
-  --shadow-soft: 0 10px 30px rgb(0 0 0 / .25);
+  --shadow-soft: 0 10px 30px rgb(0 0 0 / 0.25);
 
-  --shadow-premium:
-    0 20px 60px rgb(0 0 0 /.45);
+  --shadow-premium: 0 20px 60px rgb(0 0 0 /0.45);
 
-  --shadow-glow:
-    0 0 50px rgb(236 72 153 /.25);
+  --shadow-glow: 0 0 50px rgb(236 72 153 /0.25);
 
-  --gradient-primary:
-    linear-gradient(135deg,#ec4899,#d946ef);
+  --gradient-primary: linear-gradient(135deg, #ec4899, #d946ef);
 
-  --gradient-card:
-  linear-gradient(
+  --gradient-card: linear-gradient(
     180deg,
-    rgba(255,255,255,.05),
-    rgba(255,255,255,.015)
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.015)
   );
 
---gradient-glow:
-  linear-gradient(
+  --gradient-glow: linear-gradient(
     135deg,
-    rgba(236,72,153,.45),
-    rgba(59,130,246,.25)
+    rgba(236, 72, 153, 0.45),
+    rgba(59, 130, 246, 0.25)
   );
 
---shadow-elevated:
-  0 30px 90px rgba(0,0,0,.60);
+  --shadow-elevated: 0 30px 90px rgba(0, 0, 0, 0.6);
 
---shadow-colored:
-  0 20px 80px rgba(236,72,153,.18);
+  --shadow-colored: 0 20px 80px rgba(236, 72, 153, 0.18);
 
---glass-border:
-  rgba(255,255,255,.10);
+  --glass-border: rgba(255, 255, 255, 0.1);
 }
 
 /* ==========================================================
@@ -156,179 +148,319 @@
 ========================================================== */
 
 @layer base {
-
-  *{
+  * {
     @apply border-border;
   }
 
-  html{
-    scroll-behavior:smooth;
+  html {
+    scroll-behavior: smooth;
   }
 
- body {
+  body {
+    color: var(--foreground);
 
-  color: var(--foreground);
+    font-family: var(--font-sans);
 
-  font-family: var(--font-sans);
+    min-height: 100vh;
 
-  min-height: 100vh;
+    overflow-x: hidden;
 
-  overflow-x: hidden;
+    position: relative;
 
-  position: relative;
+    isolation: isolate;
 
-  isolation: isolate;
-
-  background:
-    radial-gradient(
-      circle at top left,
-      rgba(236,72,153,.12),
-      transparent 35%
-    ),
-    radial-gradient(
-      circle at bottom right,
-      rgba(59,130,246,.15),
-      transparent 40%
-    ),
-    linear-gradient(
-      180deg,
-      #0B0911 0%,
-      #09090B 45%,
-      #050507 100%
-    );
-
+    background:
+      radial-gradient(
+        circle at top left,
+        rgba(236, 72, 153, 0.12),
+        transparent 35%
+      ),
+      radial-gradient(
+        circle at bottom right,
+        rgba(59, 130, 246, 0.15),
+        transparent 40%
+      ),
+      linear-gradient(180deg, #0b0911 0%, #09090b 45%, #050507 100%);
+  }
 }
-}
-
-
 
 /* ==========================================================
    VELVET AMBIENT LIGHTS
 ========================================================== */
 
 body::before,
-body::after{
+body::after {
+  content: "";
 
-  content:"";
+  position: fixed;
 
-  position:fixed;
+  inset: 0;
 
-  inset:0;
+  pointer-events: none;
 
-  pointer-events:none;
-
-  z-index:-1;
-
+  z-index: -1;
 }
 
-body::before{
+body::before {
+  width: 950px;
+  height: 950px;
 
-  width:950px;
-  height:950px;
+  left: -420px;
+  top: -420px;
 
-  left:-420px;
-  top:-420px;
+  position: absolute;
 
-  position:absolute;
+  background: radial-gradient(
+    circle,
+    rgba(236, 72, 153, 0.24) 0%,
+    rgba(236, 72, 153, 0.1) 35%,
+    transparent 72%
+  );
 
-  background:
-    radial-gradient(
-      circle,
-      rgba(236,72,153,.24) 0%,
-      rgba(236,72,153,.10) 35%,
-      transparent 72%
-    );
-
-  filter:blur(150px);
-
+  filter: blur(150px);
 }
 
-body::after{
+body::after {
+  width: 1000px;
+  height: 1000px;
 
-  width:1000px;
-  height:1000px;
+  right: -450px;
+  bottom: -450px;
 
-  right:-450px;
-  bottom:-450px;
+  position: absolute;
 
-  position:absolute;
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.22) 0%,
+    rgba(59, 130, 246, 0.08) 45%,
+    transparent 75%
+  );
 
-  background:
-    radial-gradient(
-      circle,
-      rgba(59,130,246,.22) 0%,
-      rgba(59,130,246,.08) 45%,
-      transparent 75%
-    );
-
-  filter:blur(170px);
-
+  filter: blur(170px);
 }
 /* ==========================================================
    VIGNETTE
 ========================================================== */
 
-::selection{
+::selection {
+  background: #ec4899;
 
-  background:#EC4899;
-
-  color:white;
-
+  color: white;
 }
 
-body::after{
-
-  box-shadow:
-
-    inset 0 0 260px rgba(0,0,0,.45);
-
+body::after {
+  box-shadow: inset 0 0 260px rgba(0, 0, 0, 0.45);
 }
 
 /* ==========================================================
    NOISE
 ========================================================== */
 
-body::before{
-
-  background-blend-mode:screen;
-
+body::before {
+  background-blend-mode: screen;
 }
 /* =======================================
    DISPLAY FONT
 ======================================= */
 
-.display-font{
-
-    font-family:var(--font-display);
-
+.display-font {
+  font-family: var(--font-display);
 }
 
-.display-font{
-    font-family:var(--font-display);
+.display-font {
+  font-family: var(--font-display);
 }
 
-html{
-    scroll-behavior:smooth;
+html {
+  scroll-behavior: smooth;
 }
 
-::selection{
-    background:#ec4899;
-    color:white;
+::selection {
+  background: #ec4899;
+  color: white;
 }
 
-body{
-    overflow-x:hidden;
+body {
+  overflow-x: hidden;
 }
 
-.hero-noise{
-    position:absolute;
-    inset:0;
-    pointer-events:none;
-    opacity:.03;
-    background-image:
-        radial-gradient(circle at 20% 30%,white 1px,transparent 1px),
-        radial-gradient(circle at 80% 60%,white 1px,transparent 1px),
-        radial-gradient(circle at 60% 80%,white 1px,transparent 1px);
+.hero-noise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image:
+    radial-gradient(circle at 20% 30%, white 1px, transparent 1px),
+    radial-gradient(circle at 80% 60%, white 1px, transparent 1px),
+    radial-gradient(circle at 60% 80%, white 1px, transparent 1px);
 
-    background-size:180px 180px;
+  background-size: 180px 180px;
+}
+
+/* ============================
+   Velvet Design System
+============================ */
+
+:root {
+  --background: #07070a;
+  --background-secondary: #111114;
+  --background-card: #18181d;
+
+  --primary: #ff2d95;
+  --primary-light: #ff5fb2;
+  --primary-soft: #ffb6da;
+
+  --purple: #6f3dff;
+
+  --text: #f5f5f7;
+  --text-secondary: #a1a1aa;
+
+  --border: rgba(255, 255, 255, 0.08);
+
+  --glass: rgba(255, 255, 255, 0.04);
+
+  --radius: 24px;
+
+  --transition: 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+html {
+  scroll-behavior: smooth;
+
+  background: var(--background);
+}
+body {
+  background:
+    radial-gradient(
+      circle at top left,
+
+      rgba(255, 45, 149, 0.12),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at bottom right,
+
+      rgba(111, 61, 255, 0.1),
+      transparent 40%
+    ),
+    var(--background);
+
+  color: var(--text);
+
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090909;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff2d95, #6f3dff);
+
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff5fb2;
+}
+
+::selection {
+  background: #ff2d95;
+
+  color: white;
+}
+
+img {
+  transition: all 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+button {
+  transition: all 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  cursor: pointer;
+}
+a {
+  transition: all 0.3s ease;
+
+  text-decoration: none;
+}
+input {
+  transition: all 0.3s ease;
+}
+.glass {
+  backdrop-filter: blur(18px);
+
+  background: rgba(255, 255, 255, 0.04);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.premium-card {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.01)
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 24px;
+
+  backdrop-filter: blur(20px);
+
+  transition: 0.4s;
+}
+.premium-card:hover {
+  border-color: rgba(255, 45, 149, 0.25);
+
+  transform: translateY(-8px);
+
+  box-shadow: 0 20px 60px rgba(255, 45, 149, 0.12);
+}
+.glow {
+  position: absolute;
+
+  border-radius: 999px;
+
+  filter: blur(100px);
+
+  opacity: 0.35;
+
+  pointer-events: none;
+}
+.btn-premium {
+  background: linear-gradient(135deg, #ff2d95, #ff5fb2);
+
+  color: white;
+
+  padding: 14px 30px;
+
+  border-radius: 999px;
+
+  font-weight: 600;
+
+  transition: 0.35s;
+}
+.btn-premium:hover {
+  transform: translateY(-3px);
+
+  box-shadow: 0 0 40px rgba(255, 45, 149, 0.35);
+}
+.container-premium {
+  max-width: 1440px;
+
+  margin: auto;
+
+  padding-inline: 40px;
+}
+.section-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+
+  font-weight: 700;
+
+  line-height: 100%;
+
+  letter-spacing: -2px;
 }
