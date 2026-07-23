@@ -84,3 +84,24 @@
     transform: translate(0, 0);
   }
 }
+@keyframes floatParticle {
+  0% {
+    transform: translateY(110vh);
+
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.12;
+  }
+
+  80% {
+    opacity: 0.12;
+  }
+
+  100% {
+    transform: translateY(-10vh);
+
+    opacity: 0;
+  }
+}
