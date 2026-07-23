@@ -28,7 +28,7 @@ const categories = [
   {
     title: "Accesorios",
     description: "Complementos premium para cada experiencia.",
-    image: "/images/categories/accesorios.jpg",
+    image: "/images/categories/Accesorios.webp",
     href: "/products?category=accesorios",
     products: 31,
   },
@@ -52,10 +52,10 @@ export function CategoryGrid() {
   return (
     <section className="mx-auto w-[95%] max-w-7xl py-20">
       <motion.div
-        initial={{opacity:0,y:20}}
-        whileInView={{opacity:1,y:0}}
-        viewport={{once:true}}
-        transition={{duration:0.5}}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
         className="mb-12 text-center"
       >
         <p className="text-sm uppercase tracking-[0.4em] text-pink-400">
@@ -74,10 +74,10 @@ export function CategoryGrid() {
         {categories.map((category, index) => (
           <motion.div
             key={category.title}
-            initial={{opacity:0,y:40}}
-            whileInView={{opacity:1,y:0}}
-            viewport={{once:true}}
-            transition={{delay:index*0.08,duration:0.45}}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.08, duration: 0.45 }}
           >
             <CategoryCard {...category} />
           </motion.div>
