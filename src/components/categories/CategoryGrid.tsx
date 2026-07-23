@@ -28,7 +28,8 @@ const categories = [
   {
     title: "Accesorios",
     description: "Complementos premium para cada experiencia.",
-    image: "/images/categories/ChatGPT Image 22 jul 2026, 11_00_44 p.webp",
+    image:
+      "/public/images/categories/ChatGPT Image 22 jul 2026, 11_00_44 p.webp",
     href: "/products?category=accesorios",
     products: 31,
   },
