@@ -4,6 +4,7 @@ import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 import { BackgroundProvider } from "@/components/providers/BackgroundProvider";
+import { Providers } from "@/components/providers/Providers";
 
 const geistSans = Geist({
   subsets: ["latin"],
@@ -16,10 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 const playfair = Playfair_Display({
-  variable: "--font-display",
-
   subsets: ["latin"],
-
+  variable: "--font-display",
   weight: ["400", "500", "600", "700"],
 });
 
@@ -30,9 +29,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html
       lang="es"
@@ -45,9 +44,9 @@ export default function RootLayout({
       `}
     >
       <body>
-        <body>
+        <Providers>
           <BackgroundProvider>{children}</BackgroundProvider>
-        </body>
+        </Providers>
       </body>
     </html>
   );
